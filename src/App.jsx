@@ -65,12 +65,7 @@ export default function App() {
       )}
       <aside>
         <label htmlFor='search'>Search</label>
-        <input
-          name='search'
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          style={{ width: '50%' }}
-        />
+        <input name='search' value={query} onChange={(e) => setQuery(e.target.value)} />
       </aside>
       <section>
         {filteredPosts &&
