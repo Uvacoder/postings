@@ -13,7 +13,7 @@ Small web application to create and delete posts
 - [x] Add ability to delete a post
 - [x] Add UUID from npm for post ids
 - [x] Add hide/show for posts form
-- [ ] Setup localstorage as a mock database for persisting the posts
+- [x] Setup localstorage as a mock database for persisting the posts
 
 ## Backend
 
