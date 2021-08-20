@@ -1,0 +1,133 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  line-height: 1.5;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  margin: var(--gap-top);
+}
+
+input,
+textarea {
+  padding: 1em;
+  font-family: inherit;
+}
+
+article {
+  background-color: var(--color-neutral-bg);
+  border-radius: 0.6em;
+  padding: 2em;
+  border: 1px solid var(--color-neutral-border);
+}
+
+article > * + * {
+  margin-top: 0.7em;
+}
+
+section {
+  margin-top: var(--gap-top);
+}
+
+section > * + * {
+  margin-top: var(--gap-top);
+}
+
+.btn {
+  border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: var(--color-primary);
+  padding: 1em 2em;
+  color: var(--color-neutral);
+  border-radius: 0.4em;
+  cursor: pointer;
+  transition: 0.1s all ease-in;
+}
+.btn:hover {
+  background-color: var(--color-primary-accent);
+}
+
+.danger {
+  background-color: var(--color-danger);
+}
+.danger:hover {
+  background-color: var(--color-danger-accent);
+}
+
+aside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-top);
+  margin: 2em 0em;
+}
+
+.field {
+  display: flex;
+  width: min(100%, 60em);
+  flex-direction: column;
+}
+
+.field label {
+  margin-bottom: 0.4em;
+}
+
+select {
+  padding: 1em;
+}
+
+form {
+  margin-top: var(--gap-top);
+  display: flex;
+  flex-direction: column;
+  max-width: 40em;
+}
+
+form > * + * {
+  margin-top: 1em;
+}
+
+header {
+  padding: var(--gap-top);
+  color: var(--color-neutral);
+  background-color: var(--color-primary);
+}
+
+h1 {
+  font-size: 1.7rem;
+}
+
+footer {
+  font-size: 0.9rem;
+  padding: 1.5em;
+  color: var(--color-neutral);
+  text-align: center;
+  background-color: var(--color-secondary);
+  margin-top: auto;
+}
+
+.skip-link {
+  color: var(--color-netural-black);
+  font-weight: 500;
+  background-color: var(--color-focus);
+  border-bottom: 2px solid var(--color-netural-black);
+  padding: 1em 1.5em;
+  position: absolute;
+  transform: translateY(-100%);
+  transition: transform 0.3s;
+}
+
+.skip-link:focus {
+  transform: translateY(0%);
+}

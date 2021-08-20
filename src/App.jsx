@@ -8,16 +8,53 @@ export default function App() {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [query, setQuery] = useState('')
+  const [sortType, setSortType] = useState('title')
   const [toggleForm, setToggleForm] = useState(false)
+  const [filterControls, setFilterControls] = useState(false)
+
+  const regexp = new RegExp(query, 'gi')
 
   useEffect(() => {
     const existingPosts = localStorage.getItem('posts')
     setPosts(existingPosts ? JSON.parse(existingPosts) : [])
   }, [])
 
+  // Runs a check to hide
+  useEffect(() => {
+    if (posts.length > 0) {
+      setFilterControls(true)
+    } else {
+      setFilterControls(false)
+    }
+  }, [filterControls, posts])
+
+  // Sort the array of posts by the value selected in the dropdown
+  useEffect(() => {
+    const sortPosts = (type) => {
+      const types = {
+        title: 'title',
+        content: 'content'
+      }
+      const sortProp = types[type]
+      const sorted = [...filteredPosts].sort((a, b) => {
+        a = a[sortProp].match(regexp)
+        b = b[sortProp].match(regexp)
+        if (a < b) {
+          return -1
+        }
+        if (a > b) {
+          return 1
+        }
+        return 0
+      })
+      setFilteredPosts(sorted)
+    }
+    sortPosts(sortType)
+  }, [sortType])
+
+  // Filter the array of posts by regex case insensitive match via title & content
   useEffect(() => {
     if (query) {
-      const regexp = new RegExp(query, 'gi')
       const filterPosts = posts.filter((post) => (post.title + post.content).match(regexp))
       setFilteredPosts(filterPosts)
     } else {
@@ -29,8 +66,10 @@ export default function App() {
     e.preventDefault()
     const newPostArray = [...posts, { id: uuidv4(), title, content }]
     setPosts(newPostArray)
+    setControls(true)
     setTitle('')
     setContent('')
+    setToggleForm(false)
     localStorage.setItem('posts', JSON.stringify(newPostArray))
   }
 
@@ -41,10 +80,9 @@ export default function App() {
   }
 
   return (
-    <main>
-      <h1>My Posts List</h1>
+    <main id='main-content'>
       <button className='btn' onClick={() => setToggleForm(!toggleForm)}>
-        {toggleForm ? 'Hide' : 'Show'} Form
+        {toggleForm ? 'Hide Form' : 'Add Post'}
       </button>
       {toggleForm && (
         <form onSubmit={addPost}>
@@ -63,10 +101,21 @@ export default function App() {
           </button>
         </form>
       )}
-      <aside>
-        <label htmlFor='search'>Search</label>
-        <input name='search' value={query} onChange={(e) => setQuery(e.target.value)} />
-      </aside>
+      {filterControls && (
+        <aside>
+          <div className='field'>
+            <label htmlFor='search'>Search</label>
+            <input name='search' value={query} onChange={(e) => setQuery(e.target.value)} />
+          </div>
+          <div className='field'>
+            <label htmlFor='sort'>Sort By</label>
+            <select name='sort' value={sortType} onChange={(e) => setSortType(e.target.value)}>
+              <option value='title'>title</option>
+              <option value='content'>content</option>
+            </select>
+          </div>
+        </aside>
+      )}
       <section>
         {filteredPosts &&
           filteredPosts.map((post) => <Post post={post} deletePost={deletePost} key={post.id} />)}
