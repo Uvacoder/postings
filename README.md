@@ -18,6 +18,7 @@ Small web application to create and delete posts
 - [x] Add hide/show for posts form
 - [x] Setup localstorage as a mock database for persisting the posts
 - [ ] Figure out why posts aren't filtering the first item in the array
+- [x] Set up react router dom and it's views
 
 ## Backend
 

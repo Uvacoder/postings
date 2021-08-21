@@ -120,7 +120,7 @@ footer {
 .skip-link {
   color: var(--color-netural-black);
   font-weight: 500;
-  background-color: var(--color-focus);
+  background-color: var(--color-neutral-focus);
   border-bottom: 2px solid var(--color-netural-black);
   padding: 1em 1.5em;
   position: absolute;
