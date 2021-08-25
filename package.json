@@ -21,7 +21,8 @@
       "react-app"
     ],
     "rules": {
-      "no-restricted-globals": "off"
+      "no-restricted-globals": "off",
+      "react-hooks/exhaustive-deps": "off"
     }
   },
   "browserslist": {
