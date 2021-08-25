@@ -40,5 +40,5 @@ Small web application to create and delete posts
 - [x] Persist user after login in the UI
 - [x] Adjust Firebase rules to allow only the logged in user to create/edit own posts
 - [x] Adjust query for posts to only show logged in user's posts
-- [ ] Final adjustments and bug fixes
-- [ ] Setup Firebase hosting with continous deployment (gh actions)
+- [x] Final adjustments and bug fixes
+- [x] Setup Firebase hosting with continous deployment (gh actions)
