@@ -1,17 +1,19 @@
-import { initializeApp } from 'firebase/app'
-import { getAuth } from 'firebase/auth'
-import { getFirestore } from 'firebase/firestore'
-import { getStorage } from 'firebase/storage'
+import firebase from 'firebase/app'
+import 'firebase/auth'
+import 'firebase/firestore'
+import 'firebase/storage'
 
-const firebaseApp = initializeApp({
-  apiKey: 'AIzaSyCTtix_nug-N7Jf7bJ-yIpIsltW7tZh_GA',
-  authDomain: 'mypostslist.firebaseapp.com',
-  projectId: 'mypostslist',
-  storageBucket: 'mypostslist.appspot.com',
-  messagingSenderId: '208726028413',
-  appId: '1:208726028413:web:3f74104a95e90a810ac114'
+firebase.initializeApp({
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID
 })
 
-export const auth = getAuth(firebaseApp)
-export const db = getFirestore(firebaseApp)
-export const storage = getStorage(firebaseApp)
+export const auth = firebase.auth()
+export const db = firebase.firestore()
+export const storage = firebase.storage()
+export const provider = new firebase.auth.GoogleAuthProvider()
+export const timestamp = firebase.firestore.FieldValue.serverTimestamp()

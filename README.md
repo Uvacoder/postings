@@ -2,7 +2,7 @@
 
 Small web application to create and delete posts
 
-- [x] Setup Vite
+- [x] Setup CRA
 - [x] Setup Base styling
 - [x] Add basic header/footer
 
@@ -17,26 +17,28 @@ Small web application to create and delete posts
 - [x] Add sort posts by ascending/descending
 - [x] Add hide/show for posts form
 - [x] Setup localstorage as a mock database for persisting the posts
-- [ ] Figure out why posts aren't filtering the first item in the array
+- [x] Figure out why posts aren't filtering the first item in the array
 - [x] Set up react router dom and it's views
 
 ## Backend
 
-- [ ] Setup Firebase project
-- [ ] Setup and initialize Firebase
-- [ ] Create helper functions for working with Firebase
-- [ ] Remove localstorage mock database
-- [ ] Hook up posts into Firebase posts collection
-- [ ] Adjust search functionality to filter posts queried from Firebase
-- [ ] Create Firebase rules to lockdown data
+- [x] Setup Firebase project
+- [x] Setup and initialize Firebase
+- [x] Create helper functions for working with Firebase
+- [x] Remove localstorage mock database
+- [x] Hook up posts into Firebase posts collection
+- [x] Adjust search functionality to filter posts queried from Firebase
+- [x] Create Firebase rules to lockdown data
 
 ## Authentication
 
-- [ ] Add login via Google (header component)
-- [ ] Add new components/screens to allow for login and dashboard for posts (React router dom??)
-- [ ] Create users collection to extend auth information
-- [ ] Add function to create new user document after login for first time and extract Google information
-- [ ] Setup React Context API to consume the user state
-- [ ] Persist user after login in the UI
-- [ ] Adjust Firebase rules to allow only the logged in user to create/edit own posts
-- [ ] Adjust query for posts to only show logged in user's posts
+- [x] Add login via Google (header component)
+- [x] Add new components/screens to allow for login and dashboard for posts (React router dom??)
+- [x] Create users collection to extend auth information
+- [x] Add function to create new user document after login for first time and extract Google information
+- [x] Setup React Context API to consume the user state
+- [x] Persist user after login in the UI
+- [x] Adjust Firebase rules to allow only the logged in user to create/edit own posts
+- [x] Adjust query for posts to only show logged in user's posts
+- [ ] Final adjustments and bug fixes
+- [ ] Setup Firebase hosting with continous deployment (gh actions)

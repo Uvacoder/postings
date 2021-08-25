@@ -66,6 +66,13 @@ section > * + * {
   background-color: var(--color-danger-accent);
 }
 
+.secondary {
+  background-color: var(--color-secondary);
+}
+.secondary:hover {
+  background-color: var(--color-secondary-accent);
+}
+
 aside {
   display: flex;
   flex-direction: column;
@@ -102,10 +109,13 @@ header {
   padding: var(--gap-top);
   color: var(--color-neutral);
   background-color: var(--color-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 h1 {
-  font-size: 1.7rem;
+  font-size: clamp(1.2rem, 5vw, 1.7rem);
 }
 
 footer {
@@ -130,4 +140,78 @@ footer {
 
 .skip-link:focus {
   transform: translateY(0%);
+}
+
+.user-bar {
+  display: flex;
+  align-items: center;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  margin-right: 1.2em;
+}
+
+.user-info img {
+  border-radius: 10em;
+  margin-left: 0.8em;
+  width: 3em;
+  height: 3em;
+  object-fit: cover;
+}
+
+.right {
+  margin-left: 1em;
+}
+
+.link {
+  background: none;
+  padding: 0;
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+.link:hover {
+  color: var(--color-primary-accent);
+  background: none;
+}
+
+.update-header {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.update-form > * + * {
+  margin-top: 1.5em;
+}
+
+input[type='file'] {
+  padding: 0;
+}
+
+.loading {
+  display: flex;
+  gap: 2em;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.loader {
+  border: 0.4em solid #f3f3f3;
+  border-top: 0.4em solid var(--color-primary-accent); /* Blue */
+  border-radius: 10em;
+  width: 2em;
+  height: 2em;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
