@@ -1,10 +1,11 @@
 import Post from './Post'
 import { db } from '../lib/firebase'
+import { deleteDoc, doc } from 'firebase/firestore'
 
-export default function PostsList({ filteredPosts, setPosts }) {
+export default function PostsList({ filteredPosts }) {
   const deletePost = async (postId) => {
     try {
-      await db.collection('posts').doc(postId).delete()
+      await deleteDoc(doc(db, 'posts', postId))
     } catch (error) {
       console.error(error.message)
     }

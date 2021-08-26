@@ -1,5 +1,8 @@
+import { serverTimestamp } from '@firebase/firestore'
+import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth'
+import { collection, doc, onSnapshot, query, setDoc, where } from 'firebase/firestore'
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { auth, db, provider, timestamp } from '../lib/firebase'
+import { auth, db } from '../lib/firebase'
 
 const AuthContext = createContext()
 
@@ -12,26 +15,23 @@ export const AuthProvider = ({ children }) => {
   const [posts, setPosts] = useState()
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
       try {
         if (user) {
-          const doc = await db
-            .collection('users')
-            .doc(user.uid)
-            .onSnapshot((snapshot) => setUser(snapshot.data()))
-          await db
-            .collection('posts')
-            .where('uid', '==', user.uid)
-            .onSnapshot((snapshot) =>
-              setPosts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
-            )
-          if (!doc.data()) {
-            await db.collection('users').doc(user.uid).set({
+          const document = await onSnapshot(doc(db, 'users', user.uid), (snapshot) =>
+            setUser(snapshot.data())
+          )
+          await onSnapshot(
+            query(collection(db, 'posts'), where('uid', '==', user.uid)),
+            (snapshot) => setPosts(snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
+          )
+          if (!document) {
+            await setDoc(doc(db, 'users', user.uid), {
               uid: user.uid,
               username: user.displayName,
               email: user.email,
               avatar: user.photoURL,
-              created_at: timestamp
+              created_at: serverTimestamp()
             })
           }
         }
@@ -43,10 +43,10 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const login = () => {
-    auth.signInWithPopup(provider)
+    signInWithPopup(auth, new GoogleAuthProvider())
   }
   const logout = () => {
-    auth.signOut()
+    signOut(auth)
     location.reload()
   }
   return (

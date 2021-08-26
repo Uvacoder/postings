@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useAuth } from '../store/AuthContext'
-import { db, timestamp } from '../lib/firebase'
+import { db } from '../lib/firebase'
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 
 export default function AddPost({ setPosts, setUpdateProfile }) {
   const [title, setTitle] = useState('')
@@ -11,11 +12,11 @@ export default function AddPost({ setPosts, setUpdateProfile }) {
   const addPost = async (e) => {
     e.preventDefault()
     try {
-      await db.collection('posts').add({
+      await addDoc(collection(db, 'posts'), {
         title,
         content,
         uid: user.uid,
-        created_at: timestamp
+        created_at: serverTimestamp()
       })
       setTitle('')
       setContent('')

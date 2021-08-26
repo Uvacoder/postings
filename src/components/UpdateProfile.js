@@ -1,3 +1,5 @@
+import { doc, updateDoc } from 'firebase/firestore'
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { useState } from 'react'
 import { db, storage } from '../lib/firebase'
 import { useAuth } from '../store/AuthContext'
@@ -14,17 +16,15 @@ export default function UpdateProfile({ setUpdateProfile }) {
       setUploading(true)
 
       if (avatar) {
-        const upload = await storage.ref(avatar.name).put(avatar)
-        await db
-          .collection('users')
-          .doc(user.uid)
-          .update({
-            username: username ? username : '',
-            avatar: await upload.ref.getDownloadURL()
-          })
+        const storageRef = ref(storage, avatar.name)
+        await uploadBytes(storageRef, avatar)
+        await updateDoc(doc(db, 'users', user.uid), {
+          username: username ? username : '',
+          avatar: await getDownloadURL(storageRef)
+        })
       } else {
-        await db.collection('users').doc(user.uid).update({
-          username
+        await updateDoc(doc(db, 'users', user.uid), {
+          username: username
         })
       }
     } catch (error) {

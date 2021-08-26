@@ -21,7 +21,7 @@ export default function App() {
             filteredPosts={filteredPosts}
             setFilteredPosts={setFilteredPosts}
           />
-          <PostsList filteredPosts={filteredPosts} setPosts={setPosts} />
+          <PostsList filteredPosts={filteredPosts} />
         </>
       )}
     </main>
