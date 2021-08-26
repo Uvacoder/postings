@@ -1,6 +1,13 @@
-import { serverTimestamp } from '@firebase/firestore'
-import { GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from 'firebase/auth'
-import { collection, doc, onSnapshot, query, setDoc, where } from 'firebase/firestore'
+import { GoogleAuthProvider, signOut, onAuthStateChanged, signInWithRedirect } from 'firebase/auth'
+import {
+  collection,
+  doc,
+  onSnapshot,
+  query,
+  setDoc,
+  where,
+  serverTimestamp
+} from 'firebase/firestore'
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import { auth, db } from '../lib/firebase'
 
@@ -43,7 +50,7 @@ export const AuthProvider = ({ children }) => {
   }, [])
 
   const login = () => {
-    signInWithPopup(auth, new GoogleAuthProvider())
+    signInWithRedirect(auth, new GoogleAuthProvider())
   }
   const logout = () => {
     signOut(auth)

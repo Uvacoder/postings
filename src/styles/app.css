@@ -79,6 +79,11 @@ aside {
   gap: var(--gap-top);
   margin: 2em 0em;
 }
+@media (min-width: 40em) {
+  aside {
+    flex-direction: row;
+  }
+}
 
 .field {
   display: flex;
@@ -180,6 +185,11 @@ footer {
   display: flex;
   gap: 1em;
   align-items: center;
+}
+@media (max-width: 40em) {
+  .update-header button {
+    text-align: left;
+  }
 }
 
 .update-form > * + * {
