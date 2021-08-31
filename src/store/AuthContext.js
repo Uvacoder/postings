@@ -49,17 +49,19 @@ export const AuthProvider = ({ children }) => {
     return () => unsubscribe()
   }, [])
 
-  const login = () => {
-    signInWithRedirect(auth, new GoogleAuthProvider())
+  const value = {
+    user,
+    posts,
+    setPosts,
+    login: () => {
+      signInWithRedirect(auth, new GoogleAuthProvider())
+    },
+    logout: () => {
+      signOut(auth)
+      setUser(null)
+      setPosts(null)
+    }
   }
-  const logout = () => {
-    signOut(auth)
-    setUser(null)
-    setPosts(null)
-  }
-  return (
-    <AuthContext.Provider value={{ user, posts, setPosts, login, logout }}>
-      {children}
-    </AuthContext.Provider>
-  )
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
