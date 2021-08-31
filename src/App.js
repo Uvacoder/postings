@@ -6,7 +6,7 @@ import UpdateProfile from './components/UpdateProfile'
 import { useAuth } from './store/AuthContext'
 
 export default function App() {
-  const { posts, setPosts } = useAuth()
+  const { posts } = useAuth()
   const [filteredPosts, setFilteredPosts] = useState([])
   const [updateProfile, setUpdateProfile] = useState(false)
 
@@ -15,7 +15,7 @@ export default function App() {
       {updateProfile && <UpdateProfile setUpdateProfile={setUpdateProfile} />}
       {!updateProfile && (
         <>
-          <AddPost setPosts={setPosts} setUpdateProfile={setUpdateProfile} />
+          <AddPost setUpdateProfile={setUpdateProfile} />
           <FilterControls
             posts={posts}
             filteredPosts={filteredPosts}

@@ -3,7 +3,7 @@ import { useAuth } from '../store/AuthContext'
 import { db } from '../lib/firebase'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
 
-export default function AddPost({ setPosts, setUpdateProfile }) {
+export default function AddPost({ setUpdateProfile }) {
   const [title, setTitle] = useState('')
   const [content, setContent] = useState('')
   const [toggleForm, setToggleForm] = useState(false)

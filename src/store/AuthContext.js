@@ -54,7 +54,8 @@ export const AuthProvider = ({ children }) => {
   }
   const logout = () => {
     signOut(auth)
-    location.reload()
+    setUser(null)
+    setPosts(null)
   }
   return (
     <AuthContext.Provider value={{ user, posts, setPosts, login, logout }}>
