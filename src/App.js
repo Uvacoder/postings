@@ -3,7 +3,7 @@ import FilterControls from './components/FilterControls'
 import AddPost from './components/AddPost'
 import PostsList from './components/PostsList'
 import UpdateProfile from './components/UpdateProfile'
-import { useAuth } from './store/AuthContext'
+import { useAuth } from './context/AuthContext'
 
 export default function App() {
   const { posts } = useAuth()

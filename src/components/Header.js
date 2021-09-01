@@ -1,4 +1,4 @@
-import { useAuth } from '../store/AuthContext'
+import { useAuth } from '../context/AuthContext'
 import { FaSignOutAlt, FaSignInAlt } from 'react-icons/fa'
 import { useScreenSize } from '../lib/hooks'
 

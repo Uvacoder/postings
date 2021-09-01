@@ -2,7 +2,7 @@ import { doc, updateDoc } from 'firebase/firestore'
 import { getDownloadURL, ref, uploadBytes } from 'firebase/storage'
 import { useState } from 'react'
 import { db, storage } from '../lib/firebase'
-import { useAuth } from '../store/AuthContext'
+import { useAuth } from '../context/AuthContext'
 
 export default function UpdateProfile({ setUpdateProfile }) {
   const { user } = useAuth()
