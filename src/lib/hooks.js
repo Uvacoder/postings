@@ -9,3 +9,23 @@ export const useScreenSize = () => {
 
   return screenSize
 }
+
+export const useOffline = () => {
+  const [isOffline, setIsOffline] = useState(null)
+
+  useEffect(() => {
+    window.addEventListener('online', () => {
+      setIsOffline(false)
+    })
+    window.addEventListener('offline', () => {
+      setIsOffline(true)
+    })
+
+    return () => {
+      window.removeEventListener('online')
+      window.removeEventListener('offline')
+    }
+  }, [])
+
+  return isOffline
+}

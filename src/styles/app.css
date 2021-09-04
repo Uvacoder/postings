@@ -225,3 +225,43 @@ input[type='file'] {
     transform: rotate(360deg);
   }
 }
+
+.banner {
+  position: sticky;
+  bottom: 0;
+  padding: 1em 0em;
+  background-color: var(--color-primary);
+  color: var(--color-neutral);
+  width: 100%;
+  text-align: center;
+  animation: slide-up 0.3s ease-in;
+}
+
+.banner > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.banner > div > svg {
+  font-size: 2em;
+  margin-right: 0.6em;
+}
+
+@media (max-width: 40em) {
+  .banner > div {
+    padding: 1em 2em;
+    gap: 1em;
+    flex-direction: column;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
