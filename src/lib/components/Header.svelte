@@ -17,7 +17,7 @@
       on:click={() => signInWithRedirect($firebase.auth, new GoogleAuthProvider())}
     >
       {#if $breakpoint < 548}
-        <Icon icon={loginVariant} />
+        <Icon icon={loginVariant} aria-label="Sign In With Google" />
       {:else}
         Sign In With Google
       {/if}
@@ -32,7 +32,7 @@
       </figure>
       <button class="btn danger" on:click={() => signOut($firebase.auth)}>
         {#if $breakpoint < 548}
-          <Icon icon={logoutVariant} />
+          <Icon icon={logoutVariant} aria-label="Sign Out" />
         {:else}
           Sign Out
         {/if}

@@ -48,12 +48,12 @@
 </div>
 <form class="update-form" on:submit|preventDefault={handleSubmit}>
   <label for="username">Update username</label>
-  <input name="username" bind:value={username} class:error />
+  <input name="username" id="username" bind:value={username} class:error />
   {#if error}
     <p class="error-red">You must include a username</p>
   {/if}
   <label for="avatar">Change avatar (optional) (Note: We only accept jpg or png extensions)</label>
-  <input type="file" accept="image/png, image/jpeg" name="avatar" bind:files={avatar} />
+  <input type="file" accept="image/png, image/jpeg" name="avatar" id="avatar" bind:files={avatar} />
   <button type="submit" class="btn">
     {#if uploading}
       <div class="loading">

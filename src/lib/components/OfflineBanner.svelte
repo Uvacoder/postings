@@ -6,7 +6,7 @@
 
 <div class="banner" transition:slide>
   <div>
-    <Icon icon={cloudOffOutline} />
+    <Icon icon={cloudOffOutline} aria-label="Offline Cloud" />
     <p>You are currently offline. Changes will be synced when you re-connect</p>
   </div>
 </div>

@@ -47,11 +47,11 @@
   <aside>
     <div class="field">
       <label for="search">Search</label>
-      <input name="search" bind:value={query} />
+      <input name="search" id="search" bind:value={query} />
     </div>
     <div class="field">
       <label for="sort">Sort By</label>
-      <select name="sort" bind:value={sortType}>
+      <select name="sort" id="sort" bind:value={sortType}>
         <option value="title">title</option>
         <option value="content">content</option>
       </select>

@@ -41,9 +41,9 @@
 {#if toggleForm}
   <form on:submit|preventDefault={addPost} transition:slide>
     <label for="title">Title</label>
-    <input required name="title" bind:value={title} />
+    <input required name="title" id="title" bind:value={title} />
     <label for="content">Content</label>
-    <textarea required rows="10" name="content" bind:value={content} />
+    <textarea required rows="10" name="content" id="content" bind:value={content} />
     <button type="submit" class="btn">Add Post</button>
   </form>
 {/if}
