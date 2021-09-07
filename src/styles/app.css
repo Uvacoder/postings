@@ -4,12 +4,14 @@
   padding: 0;
 }
 
-body {
+body,
+html {
   font-family: var(--font-primary);
   line-height: 1.5;
+  scroll-behavior: smooth;
 }
 
-#root {
+#svelte {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -234,7 +236,6 @@ input[type='file'] {
   color: var(--color-neutral);
   width: 100%;
   text-align: center;
-  animation: slide-up 0.3s ease-in;
 }
 
 .banner > div {
@@ -257,11 +258,11 @@ input[type='file'] {
   }
 }
 
-@keyframes slide-up {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
+.error-red {
+  color: red;
+}
+
+.error {
+  border: 1px solid crimson;
+  background-color: rgb(255, 223, 229);
 }

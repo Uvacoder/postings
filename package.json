@@ -1,39 +1,18 @@
 {
-  "name": "migrate",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "firebase": "^9.0.0-beta.8",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-icons": "^4.2.0",
-    "react-scripts": "4.0.3"
-  },
+  "name": "my-posts-list",
+  "version": "1.0.0",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "svelte-kit dev",
+    "build": "svelte-kit build",
+    "preview": "svelte-kit preview"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ],
-    "rules": {
-      "no-restricted-globals": "off",
-      "react-hooks/exhaustive-deps": "off"
-    }
+  "devDependencies": {
+    "@iconify/icons-mdi": "^1.1.26",
+    "@iconify/svelte": "^2.0.0",
+    "@sveltejs/adapter-static": "^1.0.0-next.18",
+    "@sveltejs/kit": "next",
+    "firebase": "^9.0.1",
+    "svelte": "^3.34.0"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "type": "module"
 }

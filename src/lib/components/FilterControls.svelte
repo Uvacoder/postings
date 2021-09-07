@@ -1,0 +1,60 @@
+<script>
+  import auth from '$lib/stores/auth'
+
+  export let filteredPosts
+
+  let sortType = 'title'
+  let query = ''
+  let filterControls = false
+
+  const regexp = new RegExp(query, 'gi')
+
+  $: if ($auth.posts?.length > 0) {
+    filterControls = true
+  } else {
+    filterControls = false
+  }
+
+  $: if (query) {
+    const filterPosts = $auth.posts.filter((post) => (post.title + post.content).match(regexp))
+    filteredPosts = filterPosts
+  } else {
+    filteredPosts = $auth.posts
+  }
+
+  $: () => {
+    const types = {
+      title: 'title',
+      content: 'content'
+    }
+    const sortProp = types[sortType]
+    const sorted = [...filteredPosts].sort((a, b) => {
+      a = a[sortProp].match(regexp)
+      b = b[sortProp].match(regexp)
+      if (a < b) {
+        return -1
+      }
+      if (a > b) {
+        return 1
+      }
+      return 0
+    })
+    filteredPosts = sorted
+  }
+</script>
+
+{#if filterControls}
+  <aside>
+    <div class="field">
+      <label for="search">Search</label>
+      <input name="search" bind:value={query} />
+    </div>
+    <div class="field">
+      <label for="sort">Sort By</label>
+      <select name="sort" bind:value={sortType}>
+        <option value="title">title</option>
+        <option value="content">content</option>
+      </select>
+    </div>
+  </aside>
+{/if}
