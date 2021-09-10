@@ -13,7 +13,7 @@
   import firebase from '$lib/stores/firebase'
   import auth from '$lib/stores/auth'
   import offline from '$lib/stores/offline'
-  import OfflineBanner from '$lib/components/OfflineBanner.svelte'
+  import Banner from '$lib/components/Banner.svelte'
   import Footer from '$lib/components/Footer.svelte'
   import Header from '$lib/components/Header.svelte'
   import AddPost from '$lib/components/AddPost.svelte'
@@ -76,5 +76,5 @@
 <Footer />
 
 {#if $offline}
-  <OfflineBanner />
+  <Banner />
 {/if}

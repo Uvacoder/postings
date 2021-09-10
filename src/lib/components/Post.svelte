@@ -5,7 +5,7 @@
   export let deletePost
 </script>
 
-<article transition:scale>
+<article in:scale>
   <strong>Post ID: {post.id}</strong>
   <h2>{post.title}</h2>
   <p>{post.content}</p>

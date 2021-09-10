@@ -1,4 +1,5 @@
 <script>
+  import { fly } from 'svelte/transition'
   import auth from '$lib/stores/auth'
   import firebase from '$lib/stores/firebase'
   import { doc, updateDoc } from '@firebase/firestore'
@@ -42,26 +43,35 @@
   }
 </script>
 
-<div class="update-header">
-  <h2>Update Profile</h2>
-  <button class="btn link" on:click={() => (updateProfile = false)}>Back to Posts List</button>
-</div>
-<form class="update-form" on:submit|preventDefault={handleSubmit}>
-  <label for="username">Update username</label>
-  <input name="username" id="username" bind:value={username} class:error />
-  {#if error}
-    <p class="error-red">You must include a username</p>
-  {/if}
-  <label for="avatar">Change avatar (optional) (Note: We only accept jpg or png extensions)</label>
-  <input type="file" accept="image/png, image/jpeg" name="avatar" id="avatar" bind:files={avatar} />
-  <button type="submit" class="btn">
-    {#if uploading}
-      <div class="loading">
-        <span class="loader" />
-        <p>Updating...</p>
-      </div>
-    {:else}
-      Update
+<div in:fly={{ x: -100 }}>
+  <div class="update-header">
+    <h2>Update Profile</h2>
+    <button class="btn link" on:click={() => (updateProfile = false)}>Back to Posts List</button>
+  </div>
+  <form class="update-form" on:submit|preventDefault={handleSubmit}>
+    <label for="username">Update username</label>
+    <input name="username" id="username" bind:value={username} class:error />
+    {#if error}
+      <p class="error-red">You must include a username</p>
     {/if}
-  </button>
-</form>
+    <label for="avatar">Change avatar (optional) (Note: We only accept jpg or png extensions)</label
+    >
+    <input
+      type="file"
+      accept="image/png, image/jpeg"
+      name="avatar"
+      id="avatar"
+      bind:files={avatar}
+    />
+    <button type="submit" class="btn">
+      {#if uploading}
+        <div class="loading">
+          <span class="loader" />
+          <p>Updating...</p>
+        </div>
+      {:else}
+        Update
+      {/if}
+    </button>
+  </form>
+</div>

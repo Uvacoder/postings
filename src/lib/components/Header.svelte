@@ -3,8 +3,8 @@
   import auth from '$lib/stores/auth'
   import breakpoint from '$lib/stores/breakpoint'
   import Icon from '@iconify/svelte'
-  import loginVariant from '@iconify/icons-mdi/login-variant'
-  import logoutVariant from '@iconify/icons-mdi/logout-variant'
+  import loginVariant from '@iconify/icons-mdi/login-variant.js'
+  import logoutVariant from '@iconify/icons-mdi/logout-variant.js'
   import { signInWithRedirect, GoogleAuthProvider, signOut } from '@firebase/auth'
 </script>
 

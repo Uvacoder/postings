@@ -7,7 +7,7 @@
   let query = ''
   let filterControls = false
 
-  const regexp = new RegExp(query, 'gi')
+  $: regexp = new RegExp(query, 'gi')
 
   $: if ($auth.posts?.length > 0) {
     filterControls = true
@@ -17,17 +17,18 @@
 
   $: if (query) {
     const filterPosts = $auth.posts.filter((post) => (post.title + post.content).match(regexp))
+    console.log(filterPosts)
     filteredPosts = filterPosts
   } else {
     filteredPosts = $auth.posts
   }
 
-  $: () => {
+  const sortPosts = (type) => {
     const types = {
       title: 'title',
       content: 'content'
     }
-    const sortProp = types[sortType]
+    const sortProp = types[type]
     const sorted = [...filteredPosts].sort((a, b) => {
       a = a[sortProp].match(regexp)
       b = b[sortProp].match(regexp)
@@ -41,6 +42,8 @@
     })
     filteredPosts = sorted
   }
+
+  $: sortPosts(sortType)
 </script>
 
 {#if filterControls}
