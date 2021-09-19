@@ -11,7 +11,7 @@ html {
   scroll-behavior: smooth;
 }
 
-#svelte {
+#root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -228,12 +228,21 @@ input[type='file'] {
 
 .loader {
   border: 0.4em solid #f3f3f3;
-  border-top: 0.4em solid var(--color-primary-accent); /* Blue */
+  border-top: 0.4em solid var(--color-primary-accent);
   border-radius: 10em;
   width: 2em;
   height: 2em;
   animation: spin 2s linear infinite;
   margin-right: 1em;
+}
+.app-loading {
+  display: grid;
+  place-content: center;
+  height: 70vh;
+}
+.app-loader {
+  width: 4em;
+  height: 4em;
 }
 
 @keyframes spin {
