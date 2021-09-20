@@ -1,4 +1,4 @@
-export const timestamp = 1632164163526;
+export const timestamp = 1632164934556;
 
 export const build = [
 	"/_app/start-5c78a601.js",
@@ -13,8 +13,9 @@ export const build = [
 
 export const files = [
 	"/favicon.png",
-	"/logo192.png",
-	"/logo512.png",
+	"/icon-192.png",
+	"/icon-512.png",
 	"/manifest.json",
+	"/maskable.png",
 	"/robots.txt"
 ];

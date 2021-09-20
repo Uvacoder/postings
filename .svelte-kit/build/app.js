@@ -4,7 +4,7 @@ import { set_paths, assets } from './runtime/paths.js';
 import { set_prerendering } from './runtime/env.js';
 import * as user_hooks from "./hooks.js";
 
-const template = ({ head, body }) => "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <link rel=\"icon\" href=\"/favicon.png\" />\n    <meta name=\"description\" content=\"The one stop shop for your posts\" />\n    <meta name=\"theme-color\" content=\"#000000\" />\n    <link rel=\"apple-touch-icon\" href=\"/logo192.png\" />\n    <link rel=\"manifest\" href=\"/manifest.json\" />\n    <title>My Posts List</title>\n    <meta name=\"keywords\" content=\"posts, list, my\" />\n    " + head + "\n  </head>\n  <body>\n    <div id=\"svelte\">" + body + "</div>\n  </body>\n</html>\n";
+const template = ({ head, body }) => "<!DOCTYPE html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <meta name=\"description\" content=\"The one stop shop for your posts\" />\n    <meta name=\"keywords\" content=\"posts, list, my\" />\n    <meta name=\"theme-color\" content=\"#000000\" />\n    <link rel=\"icon\" href=\"/favicon.png\" />\n    <link rel=\"apple-touch-icon\" href=\"/icon-192.png\" />\n    <link rel=\"manifest\" href=\"/manifest.json\" />\n    <title>My Posts List</title>\n    " + head + "\n  </head>\n  <body>\n    <div id=\"svelte\">" + body + "</div>\n  </body>\n</html>\n";
 
 let options = null;
 
@@ -56,7 +56,7 @@ const d = decodeURIComponent;
 const empty = () => ({});
 
 const manifest = {
-	assets: [{"file":"favicon.png","size":1571,"type":"image/png"},{"file":"logo192.png","size":5347,"type":"image/png"},{"file":"logo512.png","size":9664,"type":"image/png"},{"file":"manifest.json","size":496,"type":"application/json"},{"file":"robots.txt","size":24,"type":"text/plain"}],
+	assets: [{"file":"favicon.png","size":1571,"type":"image/png"},{"file":"icon-192.png","size":5347,"type":"image/png"},{"file":"icon-512.png","size":9664,"type":"image/png"},{"file":"manifest.json","size":621,"type":"application/json"},{"file":"maskable.png","size":23865,"type":"image/png"},{"file":"robots.txt","size":23,"type":"text/plain"}],
 	layout: "src/routes/__layout.svelte",
 	error: ".svelte-kit/build/components/error.svelte",
 	routes: [
