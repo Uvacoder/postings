@@ -21,8 +21,11 @@
 
   let updateProfile = false
   let filteredPosts = []
+  let loading = false
 
   onMount(() => {
+    loading = true
+
     const unsubscribe = onAuthStateChanged($firebase.auth, async (user) => {
       try {
         if (user) {
@@ -50,6 +53,8 @@
         }
       } catch (error) {
         console.error(error)
+      } finally {
+        loading = false
       }
     })
 
@@ -62,7 +67,11 @@
 <Header />
 
 <main id="main">
-  {#if updateProfile}
+  {#if loading}
+    <div style="min-height: 30em;" class="loading skeleton">
+      <span style="width: 6em; height: 6em;" class="loader" />
+    </div>
+  {:else if updateProfile}
     <UpdateProfile bind:updateProfile />
   {:else}
     <AddPost bind:updateProfile />

@@ -1,6 +1,6 @@
 <script>
   import { slide } from 'svelte/transition'
-  import CloudOffline from 'carbon-icons-svelte/lib/CloudOffline16'
+  import CloudOffline from 'carbon-icons-svelte/lib/CloudOffline32'
 </script>
 
 <div class="banner" transition:slide>

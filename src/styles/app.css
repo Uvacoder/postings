@@ -226,6 +226,14 @@ input[type='file'] {
   justify-content: center;
 }
 
+.skeleton {
+  height: min(90%, 30em);
+}
+.skeleton-loader {
+  width: 5em;
+  height: 5em;
+}
+
 .loader {
   border: 0.4em solid #f3f3f3;
   border-top: 0.4em solid var(--color-primary-accent); /* Blue */
