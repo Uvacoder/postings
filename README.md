@@ -1,6 +1,6 @@
 # My Posts List
 
-Small web application to create and delete posts
+Small web application to create and delete post
 
 - [x] Setup CRA
 - [x] Setup Base styling
