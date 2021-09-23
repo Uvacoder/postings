@@ -59,7 +59,7 @@ const UpdateProfile = ({ setUpdateProfile }) => {
       </div>
 
       <form className='update-form' onSubmit={handleSubmit}>
-        <label for='username'>Update username</label>
+        <label htmlFor='username'>Update username</label>
         <input
           name='username'
           id='username'
@@ -68,7 +68,7 @@ const UpdateProfile = ({ setUpdateProfile }) => {
           onChange={(e) => setUsername(e.target.value)}
         />
         {error && <p className='error-red'>You must include a username</p>}
-        <label for='avatar'>
+        <label htmlFor='avatar'>
           Change avatar (optional) (Note: We only accept jpg or png extensions)
         </label>
         <input

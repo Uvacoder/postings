@@ -62,7 +62,7 @@ const AddPost = ({ setUpdateProfile }) => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-          <button type='submit' class='btn'>
+          <button type='submit' className='btn'>
             Add Post
           </button>
         </motion.form>

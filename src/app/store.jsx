@@ -24,9 +24,19 @@ export const Provider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, async (details) => {
       try {
         if (details) {
-          const document = await onSnapshot(doc(db, 'users', details?.uid), (snapshot) =>
-            setUser(snapshot.data())
-          )
+          await onSnapshot(doc(db, 'users', details?.uid), async (snapshot) => {
+            if (!snapshot.exists()) {
+              await setDoc(doc(db, 'users', details?.uid), {
+                uid: details?.uid,
+                username: details?.displayName,
+                email: details?.email,
+                avatar: details?.photoURL,
+                created_at: serverTimestamp()
+              })
+            } else {
+              setUser(snapshot.data())
+            }
+          })
 
           await onSnapshot(
             query(collection(db, 'posts'), where('uid', '==', details?.uid)),
@@ -38,16 +48,6 @@ export const Provider = ({ children }) => {
                 }))
               )
           )
-
-          if (!document) {
-            await setDoc(doc(db, 'users', details?.uid), {
-              uid: details?.uid,
-              username: details?.displayName,
-              email: details?.email,
-              avatar: details?.photoURL,
-              created_at: serverTimestamp()
-            })
-          }
         } else {
           setUser(null)
           setPosts([])
